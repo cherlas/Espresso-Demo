@@ -10,8 +10,11 @@ import android.widget.EditText;
 public class EspressoDemoActivity extends AppCompatActivity {
 
     private Button loginButton;
+    private Button intendingTestButton;
     private EditText emailText;
     private EditText passwordText;
+
+    private static final int REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,17 +22,28 @@ public class EspressoDemoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_espresso_demo);
 
         loginButton = findViewById(R.id.login);
+        intendingTestButton = findViewById(R.id.intending_button);
         emailText = findViewById(R.id.email);
         passwordText = findViewById(R.id.password);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(EspressoDemoActivity.this,ShowResultActivity.class);
-                intent.putExtra("email", emailText.getText().toString());
-                intent.putExtra("password",passwordText.getText().toString());
-                startActivity(intent);
-            }
+        loginButton.setOnClickListener(v -> {
+            Intent intent = new Intent(EspressoDemoActivity.this,ShowResultActivity.class);
+            intent.putExtra("email", emailText.getText().toString());
+            intent.putExtra("password",passwordText.getText().toString());
+            startActivity(intent);
         });
+
+        intendingTestButton.setOnClickListener((v) -> {
+            Intent intent  = new Intent("cc.istarx.espressodemo.customaction");
+            startActivityForResult(intent, REQUEST_CODE);
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            Intent
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
