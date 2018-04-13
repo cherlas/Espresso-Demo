@@ -107,11 +107,14 @@ public class ExampleInstrumentedTest {
     @Test
     public void intendingTest() {
         Intent resultData = new Intent();
-        String phoneNumber = "123-345-6789";
-        resultData.putExtra("phone", phoneNumber);
+        String testStr = "Intending test string for test...";
+        resultData.putExtra("test", testStr);
         Instrumentation.ActivityResult result =
                 new Instrumentation.ActivityResult(Activity.RESULT_OK, resultData);
 
         intending(toPackage("cc.istarx.espressodemo")).respondWith(result);
+
+        onView(withId(R.id.intending_button)).perform(click());
+        onView(withId(R.id.result_text)).check(matches(allOf(isDisplayed(),withText(testStr))));
     }
 }

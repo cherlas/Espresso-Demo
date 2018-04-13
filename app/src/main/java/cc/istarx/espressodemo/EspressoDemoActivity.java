@@ -3,9 +3,9 @@ package cc.istarx.espressodemo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class EspressoDemoActivity extends AppCompatActivity {
 
@@ -13,6 +13,7 @@ public class EspressoDemoActivity extends AppCompatActivity {
     private Button intendingTestButton;
     private EditText emailText;
     private EditText passwordText;
+    TextView result_text;
 
     private static final int REQUEST_CODE = 1;
 
@@ -25,6 +26,7 @@ public class EspressoDemoActivity extends AppCompatActivity {
         intendingTestButton = findViewById(R.id.intending_button);
         emailText = findViewById(R.id.email);
         passwordText = findViewById(R.id.password);
+        result_text = findViewById(R.id.result_text);
 
         loginButton.setOnClickListener(v -> {
             Intent intent = new Intent(EspressoDemoActivity.this,ShowResultActivity.class);
@@ -42,7 +44,8 @@ public class EspressoDemoActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE) {
-            Intent
+            String testStr = data.getStringExtra("test");
+            result_text.setText(testStr);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

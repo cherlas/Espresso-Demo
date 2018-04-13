@@ -25,6 +25,7 @@
         <activity android:name=".IntendingTestActivity">
             <intent-filter>
                 <action android:name="cc.istarx.espressodemo.customaction"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
     </application>

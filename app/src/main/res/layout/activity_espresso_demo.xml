@@ -56,7 +56,7 @@
         android:text="@string/intending_test" />
 
     <TextView
-        android:id="@+id/result_number"
+        android:id="@+id/result_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/result_number" />
