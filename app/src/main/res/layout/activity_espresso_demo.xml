@@ -53,5 +53,5 @@
         android:id="@+id/intending_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Intending Test" />
+        android:text="@string/intending_test" />
 </LinearLayout>
